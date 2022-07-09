@@ -1,0 +1,25 @@
+$sizeHeaderHeight: 80px;
+$sizeWidth: 1000px;
+
+// Media Query
+$sizeSmallMobile: 360px;
+$sizeMobile: 375px;
+$sizeSmallTablet: 587px;
+$sizeTablet: 768px;
+$sizeBigTablet: 991px;
+
+#app {
+  .page {
+    min-height: calc(var(--vh, 1vh) * 100 - 222px);
+    padding-top: $sizeHeaderHeight;
+
+    @media (max-width: $sizeTablet) {
+      padding-top: 60px;
+    }
+  }
+}
+
+.aaa {
+  background-color: black;
+}
+

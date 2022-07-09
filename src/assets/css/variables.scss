@@ -1,0 +1,498 @@
+//color
+$colorPrimary: #8601E7;
+$colorText: #222;
+$colorSecond: #999;
+$colorGrayLight: #EEE;
+$colorGrayThin: #DDD;
+$colorGray: #CCC;
+$colorDarkGray: #777;
+$colorWhite: #FFF;
+$colorBlack: #000;
+$colorHelpGuide: #DEB1FF;
+$textColor: #222222;
+
+
+//fontSize
+$sizeFontBadge: 11px;
+$sizeFontH9: 10px;
+$sizeFontH8: 12px;
+$sizeFontH7: 14px;
+$sizeFontH6: 16px;
+$sizeFontH5: 18px;
+$sizeFontH4: 20px;
+$sizeFontH3: 24px;
+$sizeFontH2: 30px;
+$sizeFontH1: 40px;
+
+$fontSizeList: (badge: $sizeFontBadge, h9:$sizeFontH9, h8:$sizeFontH8, h7: $sizeFontH7, h6: $sizeFontH6, h5: $sizeFontH5, h4: $sizeFontH4, h3: $sizeFontH3, h2: $sizeFontH2, h1:$sizeFontH1);
+.text {
+  @each $f, $s in $fontSizeList {
+    &-size {
+      &-#{'' + $f} {
+        font-size: $s;
+      }
+    }
+  }
+
+  &-keep-all {
+    word-break: keep-all;
+  }
+
+  &-break-all {
+    word-break: break-all;
+  }
+
+  &-line {
+    &-15 {
+      line-height: 1.15em;
+    }
+
+    &-5 {
+      line-height: 1.5em;
+    }
+  }
+
+  &-right {
+    text-align: right;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-height {
+    &-form {
+      line-height: 40px;
+    }
+  }
+}
+
+$marginBase: 5px;
+$sizePadding: $marginBase * 4;
+$sizeHalfPadding: $marginBase * 2;
+
+@mixin sm {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: 1200px){
+    @content;
+  }
+}
+$mpNameList: (t: '-top', b: '-bottom', l: '-left', r: '-right', a: '');
+@for $i from 0 through 20 {
+  @each $n, $m in $mpNameList {
+    .m#{'' + $n}-#{'' + $i} {
+      margin#{$m}: $marginBase * $i;
+    }
+    .p#{'' + $n}-#{'' + $i} {
+      padding#{$m}: $marginBase * $i;
+    }
+  }
+  .z-i-#{'' + $i} {
+    z-index: $i + 10;
+  }
+}
+
+@for $i from 0 through 10 {
+  .w-#{'' + $i} {
+    width: 10% * $i;
+
+    &-imp {
+      width: 10% * $i !important;
+    }
+  }
+  .h-#{$i} {
+    height: 10% * $i;
+
+    &-imp {
+      height: 10% * $i !important;
+    }
+  }
+}
+
+.w-auto {
+  width: auto;
+}
+
+.h-auto {
+  height: auto;
+}
+
+.text {
+  &-right {
+    text-align: right;
+  }
+
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-height {
+    &-form {
+      line-height: 40px;
+    }
+  }
+}
+
+$brList: (all: '', l: '-left', r: '-right', t: '-top', b: '-bottom');
+
+@mixin clear-fix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin fal {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 300;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  color: inherit;
+}
+
+@mixin fas {
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 900;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  color: inherit;
+}
+
+.fa, .fas, .far, .fad {
+  font-family: "Font Awesome 6 Pro" !important;
+  color: inherit;;
+
+  &:before, &:after {
+    font-family: "Font Awesome 6 Pro" !important;
+    color: inherit;;
+  }
+}
+
+@mixin transform($transform...) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -ms-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+  //image-rendering: pixelated;
+  //image-rendering: -moz-pixelated;
+  //image-rendering: -webkit-pixelated;
+  //image-rendering: -o-pixelated;
+  image-rendering: crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -o-crisp-edges;
+}
+
+@mixin transition($transition...) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin box-shadow($boxshadow...) {
+  -webkit-box-shadow: $boxshadow;
+  -moz-box-shadow: $boxshadow;
+  box-shadow: $boxshadow;
+}
+
+@mixin border-radius($boxradius...) {
+  -webkit-border-radius: $boxradius;
+  -moz-border-radius: $boxradius;
+  border-radius: $boxradius;
+  overflow: hidden;
+  z-index: 1;
+}
+
+@mixin divide-line {
+  &:after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background: $colorGray;
+    border-top: 1px solid $colorGray;
+  }
+}
+
+// 특정 영역의 세로 중앙 맞추기
+@mixin center-v-transform {
+  position: relative;
+  top: 50%;
+  display: block;
+  @include transform(translateY(-50%));
+}
+
+// 특정 영역의 가로 중앙 맞추기
+@mixin center-h-transform {
+  position: relative;
+  left: 50%;
+  display: block;
+  @include transform(translateX(-50%));
+}
+
+@mixin center-transform {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  display: block;
+  @include transform(translateX(-50%) translateY(-50%));
+}
+
+.display {
+  &-block {
+    display: block !important;
+  }
+
+  &-inline {
+    display: inline-block !important;
+  }
+
+  &-inline-flex {
+    display: inline-flex !important;
+    display: -ms-inline-flexbox !important;
+  }
+
+  &-hidden {
+    display: none !important;
+  }
+}
+
+.font {
+  &-normal {
+    font-weight: normal;
+  }
+
+  &-bold {
+    font-weight: bold;
+  }
+}
+
+.clear-fix {
+  @include clear-fix;
+}
+
+//이미지 사이즈
+.img {
+  &-container {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    z-index: 1;
+  }
+
+  &-contain {
+    img {
+      position: absolute;
+      left: -10000%;
+      right: -10000%;
+      top: -10000%;
+      bottom: -10000%;
+      margin: auto auto;
+      max-width: 10%;
+      max-height: 10%;
+      @include transform(scale(10));
+    }
+  }
+
+  &-cover {
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      left: -10000%;
+      right: -10000%;
+      top: -10000%;
+      bottom: -10000%;
+      margin: auto auto;
+      min-width: 1000%;
+      min-height: 1000%;
+      @include transform(scale(0.1));
+    }
+  }
+}
+
+.pos-absolute {
+  position: absolute !important;
+
+  &-vertical {
+    @include center-v-transform;
+    position: absolute;
+    display: inline-block;
+  }
+
+  &-horizontal {
+    @include center-h-transform;
+    position: absolute;
+    display: inline-block;
+  }
+
+  &-center {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    @include transform(translateY(-50%) translateX(-50%));
+  }
+}
+
+.pos-relative {
+  position: relative !important;
+
+  &-vertical {
+    @include center-v-transform;
+    display: inline-block;
+  }
+
+  &-horizontal {
+    @include center-h-transform;
+    display: inline-block;
+  }
+
+  &-center {
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    @include transform(translateY(-50%) translateX(-50%));
+  }
+}
+
+.float {
+  &-left {
+    float: left !important;
+  }
+
+  &-right {
+    float: right !important;
+  }
+
+  &-none {
+    float: none !important;
+  }
+}
+
+.apoc-scrollbar {
+  position: relative;
+
+  &::-webkit-scrollbar {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    @include transition(background-color 1 ease);
+    //background-color: transparent;
+    background-color: $colorGray;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  &::-webkit-scrollbar-track {
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: $colorGray;
+
+      &:hover {
+        background-color: $colorPrimary;
+      }
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+$hList: (h1: $sizeFontH1, h2: $sizeFontH2, h3: $sizeFontH3, h4: $sizeFontH4, h5: $sizeFontH5, h6: $sizeFontH6, h7: $sizeFontH7, badge: $sizeFontBadge);
+@each $h, $s in $hList {
+  #{$h} {
+    font-size: $s;
+  }
+  .text-size-#{$h} {
+    font-size: $s;
+  }
+}
+
+html, body {
+  font-size: $sizeFontH7;
+  color: $colorText;
+}
+
+.flip {
+  &x {
+    @include transform(scaleY(-1));
+  }
+
+  &y {
+    @include transform(scaleX(-1));
+  }
+}
+
+.whitespace-pre {
+  white-space: pre;
+}
+
+.mobile-hide {
+  @include sm {
+    display: none !important;
+  }
+}
+
+.pc-hide {
+  display: none;
+  @include sm {
+    display: block !important;
+  }
+}
+
+@mixin hide-scroll {
+  -ms-overflow-style: none;
+  & ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+$aniEaseDefault: cubic-bezier(.53, .41, .22, 1.01);
+$aniEaseTimeDefault: 0.2s;
